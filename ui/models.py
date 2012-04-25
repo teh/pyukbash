@@ -10,3 +10,6 @@ class Quote(models.Model):
 
     def total(self):
         return self.up - self.down
+
+    def __unicode__(self):
+        return self.text[:100]
