@@ -42,3 +42,20 @@ textarea {
 div.rating {
   font-family: courier, monospace;
 }
+
+ul.messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #eee;
+  padding: 6px;
+}
+
+ul.messages .info {
+  color: #0a0;
+  font-weight: bold;
+}
+ul.messages .error {
+  color: #a00;
+  font-weight: bold;
+}

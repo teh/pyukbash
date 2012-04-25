@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
 from django.db import IntegrityError
+from django.contrib import messages
 
 from .models import Quote, VoteRecord
 
@@ -19,6 +20,7 @@ def submit(request):
         form = QuoteForm(request.POST)
         if form.is_valid():
             Quote.objects.create(text=form.cleaned_data['quote'])
+            messages.add_message(request, messages.INFO, "Quote submitted.")
             return redirect('landing')
 
     else:
@@ -36,7 +38,6 @@ def quote_page(request, quote_id):
 
 def vote(request, quote_id, updown):
     quote = get_object_or_404(Quote, id=quote_id)
-
     try:
         VoteRecord.objects.create(
             quote=quote,
@@ -44,6 +45,7 @@ def vote(request, quote_id, updown):
             vote=-1 if updown == 'down' else +1,
         )
     except IntegrityError:
+        messages.add_message(request, messages.ERROR, "Already voted on this qoute.")
         return redirect('landing')
     
     if updown == 'up':
@@ -51,4 +53,5 @@ def vote(request, quote_id, updown):
     else:
         quote.down += 1
     quote.save()
+    messages.add_message(request, messages.INFO, "Voted.")
     return redirect('landing')
