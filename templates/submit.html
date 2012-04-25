@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Submit a quote</h1>
+<form method="post">
+  {% csrf_token %}
+  <p>
+    {{ form.quote }}
+  </p>
+  <p>
+    <button>submit quote</button>
+  </p>
+</form>
+{% endblock %}

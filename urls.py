@@ -6,5 +6,6 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns(
     '',
-    url(r'^$', 'pyukbash.ui.views.landing'),
+    url(r'^$', 'pyukbash.ui.views.landing', name='landing'),
+    url(r'^submit$', 'pyukbash.ui.views.submit', name='submit'),
 )
