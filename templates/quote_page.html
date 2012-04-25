@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<a href="{% url quote_page quote.id %}">#{{ quote.id }}</a>
++({{ quote.up }})-
+<pre>{{ quote.text }}</pre>
+Submitted {{ quote.created|timesince }} ago
+
+{% endblock %}

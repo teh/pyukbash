@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
 
 from .models import Quote
@@ -24,4 +24,10 @@ def submit(request):
 
     return render(request, 'submit.html', {
         'form': form,
+    })
+
+def quote_page(request, quote_id):
+    quote = get_object_or_404(Quote, id=quote_id)
+    return render(request, 'quote_page.html', {
+        'quote': quote,
     })

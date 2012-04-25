@@ -5,10 +5,10 @@
 <ul class="quotes">
 {% for quote in last_10 %}
 <li>
-#{{ quote.id }}
-+({{ quote.up }})-
-<pre>{{ quote.text}}</pre>
-Submitted {{ quote.created|timesince }} ago
+  <a href="{% url quote_page quote.id %}">#{{ quote.id }}</a>
+  +({{ quote.up }})-
+  <pre>{{ quote.text }}</pre>
+  Submitted {{ quote.created|timesince }} ago
 </li>
 {% endfor %}
 </ul>
