@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
+from django.db import IntegrityError
 
-from .models import Quote
+from .models import Quote, VoteRecord
 
 class QuoteForm(forms.Form):
     quote = forms.CharField(widget=forms.Textarea)
@@ -10,6 +11,7 @@ def landing(request):
     last_10 = Quote.objects.order_by('-created')[:10]
     return render(request, 'landing.html', {
         'last_10': last_10,
+        'request': request,
     })
 
 def submit(request):
@@ -34,6 +36,16 @@ def quote_page(request, quote_id):
 
 def vote(request, quote_id, updown):
     quote = get_object_or_404(Quote, id=quote_id)
+
+    try:
+        VoteRecord.objects.create(
+            quote=quote,
+            ip4=request.META['REMOTE_ADDR'],
+            vote=-1 if updown == 'down' else +1,
+        )
+    except IntegrityError:
+        return redirect('landing')
+    
     if updown == 'up':
         quote.up += 1
     else:
