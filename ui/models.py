@@ -7,3 +7,6 @@ class Quote(models.Model):
 
     up = models.IntegerField(default=0)
     down = models.IntegerField(default=0)
+
+    def total(self):
+        return self.up - self.down
