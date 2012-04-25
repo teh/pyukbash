@@ -1,4 +1,4 @@
-body * {
+p, li, h1, h2 {
   font-family: arial, helvetica, sans-serif;
 }
 body {
@@ -37,4 +37,8 @@ ul.quotes {
 
 textarea {
   width: 60%;
+}
+
+div.rating {
+  font-family: courier, monospace;
 }

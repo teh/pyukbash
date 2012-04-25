@@ -2,8 +2,8 @@
 
 {% block main %}
 
-<a href="{% url quote_page quote.id %}">#{{ quote.id }}</a>
-+({{ quote.up }})-
+<h1>Quote #{{ quote.id }}</h1>
+{% include "quote_header.html" %}
 <pre>{{ quote.text }}</pre>
 Submitted {{ quote.created|timesince }} ago
 
