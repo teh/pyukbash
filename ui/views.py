@@ -7,7 +7,10 @@ class QuoteForm(forms.Form):
     quote = forms.CharField(widget=forms.Textarea)
 
 def landing(request):
-    return render(request, 'landing.html', {})
+    last_10 = Quote.objects.order_by('-created')[:10]
+    return render(request, 'landing.html', {
+        'last_10': last_10,
+    })
 
 def submit(request):
     if request.method == 'POST':

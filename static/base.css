@@ -1,3 +1,36 @@
+body * {
+  font-family: arial, helvetica, sans-serif;
+}
 body {
-  margin: 0px;
+  margin: 10px 80px;
+}
+#header {
+  background: #99f;
+  height: 20px;
+  padding: 6px;
+}
+#header a {
+  color: black;
+}
+#header ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#header li {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+
+pre {
+  font-family: courier, monospace;
+  font-size: 11pt;
+}
+
+
+ul.quotes {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

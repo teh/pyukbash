@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
 {% block main %}
-HI THERE
+
+<ul class="quotes">
+{% for quote in last_10 %}
+<li>
+#{{ quote.id }}
++({{ quote.up }})-
+<pre>{{ quote.text}}</pre>
+Submitted {{ quote.created|timesince }} ago
+</li>
+{% endfor %}
+</ul>
+
 {% endblock %}
