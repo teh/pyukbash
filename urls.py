@@ -10,6 +10,7 @@ urlpatterns = patterns(
     url(r'^$', 'pyukbash.ui.views.landing', name='landing'),
     url(r'^submit$', 'pyukbash.ui.views.submit', name='submit'),
     url(r'^quote/(\d+)$', 'pyukbash.ui.views.quote_page', name='quote_page'),
+    url(r'^vote/(\d+)/(up|down)$', 'pyukbash.ui.views.vote', name='vote'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -31,3 +31,12 @@ def quote_page(request, quote_id):
     return render(request, 'quote_page.html', {
         'quote': quote,
     })
+
+def vote(request, quote_id, updown):
+    quote = get_object_or_404(Quote, id=quote_id)
+    if updown == 'up':
+        quote.up += 1
+    else:
+        quote.down += 1
+    quote.save()
+    return redirect('landing')
