@@ -5,12 +5,13 @@ body {
   margin: 10px 80px;
 }
 #header {
-  background: #99f;
+  background: #376A94;
   height: 20px;
   padding: 6px;
+  color: #ccc;
 }
 #header a {
-  color: black;
+  color: white;
 }
 #header ul {
   list-style-type: none;
@@ -20,7 +21,7 @@ body {
 #header li {
   float: left;
   display: block;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 pre {
